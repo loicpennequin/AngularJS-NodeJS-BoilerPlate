@@ -1,0 +1,1 @@
+{"version":3,"sources":["app.global.sass"],"names":[],"mappings":"AAAA;EACE,+BAAsB;UAAtB,uBAAsB,EAIJ;EALpB;IAII,UAAS;IACT,WAAU,EAAI","file":"app.css","sourcesContent":["* {\n  box-sizing: border-box;\n\n  body {\n    margin: 0;\n    padding: 0; } }\n"]}
