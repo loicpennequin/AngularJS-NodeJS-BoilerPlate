@@ -60724,6 +60724,7 @@ angular.module('app', ['auth', 'ui.router', 'ngMessages', 'ngAnimate', 'ngCookie
           <li> gulp service --m modulename  --s servicename <span style="color:#DF4C58;"><strong>WIP</strong></span></li>
           <li> gulp factory --m modulename  --f factoryname</li>
           <li> gulp directive --m modulename  --d directivename <span style="color:#DF4C58;"><strong>WIP</strong></span></li>
+          <p style="font-size: 1.2em;"><span style="color:#DF4C58;"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i></span> After addindg a module, you have to inject it manually into your main module dependencies in app.js !!!</p>
 
           <h3>We're almost done !</h3>
           <p>Don't forget to create your database and to configure your .env file located at <pre>./config</pre></p>
