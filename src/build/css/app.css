@@ -5,4 +5,83 @@
     margin: 0;
     padding: 0; }
 
+.registerForm-component {
+  font-family: 'Poppins'; }
+  .registerForm-component form {
+    min-width: 25vw;
+    background: #f7f7f7;
+    padding: 10px 30px;
+    margin: 0 auto; }
+  .registerForm-component .form-control {
+    margin-bottom: 10px; }
+    .registerForm-component .form-control label, .registerForm-component .form-control input {
+      display: block; }
+    .registerForm-component .form-control label {
+      margin-bottom: 5px;
+      font-weight: 700;
+      color: #DF4C58; }
+    .registerForm-component .form-control input {
+      padding: 5px;
+      border-radius: 5px;
+      width: 100%; }
+    .registerForm-component .form-control input[type=submit] {
+      background-color: #DF4C58;
+      color: white;
+      font-family: 'Poppins';
+      border: none;
+      cursor: pointer;
+      font-size: 1.1em; }
+      .registerForm-component .form-control input[type=submit]:hover {
+        -webkit-filter: brightness(120%);
+                filter: brightness(120%); }
+      .registerForm-component .form-control input[type=submit][disabled] {
+        opacity: 0.5; }
+    .registerForm-component .form-control input:focus {
+      outline-width: 1px;
+      outline-color: #DF4C58; }
+  .registerForm-component .form-alert {
+    font-size: 0.8em;
+    color: #DF4C58; }
+
+.loginForm-component {
+  font-family: 'Poppins'; }
+  .loginForm-component form {
+    min-width: 25vw;
+    background: #f7f7f7;
+    padding: 10px 30px;
+    margin: 0 auto;
+    display: block; }
+  .loginForm-component .form-control {
+    margin-bottom: 10px; }
+    .loginForm-component .form-control label, .loginForm-component .form-control input {
+      display: block; }
+    .loginForm-component .form-control label {
+      margin-bottom: 5px;
+      font-weight: 700;
+      color: #DF4C58; }
+    .loginForm-component .form-control input {
+      padding: 5px;
+      border-radius: 5px;
+      width: 100%; }
+  .loginForm-component input[type=submit], .loginForm-component button {
+    background-color: #DF4C58;
+    border-radius: 5px;
+    padding: 5px;
+    color: white;
+    font-family: 'Poppins';
+    border: none;
+    cursor: pointer;
+    font-size: 1.1em; }
+    .loginForm-component input[type=submit]:hover, .loginForm-component button:hover {
+      -webkit-filter: brightness(120%);
+              filter: brightness(120%); }
+    .loginForm-component input[type=submit][disabled], .loginForm-component button[disabled] {
+      opacity: 0.5; }
+  .loginForm-component input:focus {
+    outline-width: 1px;
+    outline-color: #DF4C58; }
+  .loginForm-component .form-alert {
+    font-size: 0.8em;
+    color: #DF4C58; }
+
 /*# sourceMappingURL=app.css.map */

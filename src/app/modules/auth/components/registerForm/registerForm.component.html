@@ -1,0 +1,76 @@
+<div class="registerForm-component">
+    <h1>{{$ctrl.name}}</h1>
+    <form ng-submit="$ctrl.register()" name="registerForm" novalidate>
+        <div class="form-control">
+            <label>UserName</label>
+            <input type="text"
+                   name="username"
+                   ng-model="$ctrl.new.username"
+                   ng-minlength="4"
+                   ng-maxlength="20"
+                   required/>
+            <div ng-if="registerForm.username.$touched" ng-messages="registerForm.username.$error">
+                <div class="form-alert" ng-message="minlength">
+                    Username must be at least 4 characters long.
+                </div>
+                <div class="form-alert" ng-message="maxlength">
+                    Username must be under 20 characters long.
+                </div>
+                <div class="form-alert" ng-message="required">
+                    Username is required.
+                </div>
+            </div>
+        </div>
+
+        <div class="form-control">
+            <label>Password</label>
+            <input type="password"
+                   name="password"
+                   ng-model="$ctrl.new.password"
+                   ng-minlength="8"
+                   required/>
+            <div ng-if="registerForm.password.$touched" ng-messages="registerForm.password.$error">
+                <div class="form-alert" ng-message="minlength">
+                    Password must be at least 8 characters long.
+                </div>
+                <div class="form-alert" ng-message="required">
+                    Password is required.
+                </div>
+            </div>
+        </div>
+
+        <div class="form-control">
+            <label>Confirm Password</label>
+            <input type="password"
+                   name="passwordmatch"
+                   ng-model="$ctrl.new.passwordMatch"
+                   required/>
+            <div ng-if="registerForm.passwordmatch.$touched" ng-messages="registerForm.passwordmatch.$error">
+                <div class="form-alert" ng-message="required">
+                    Please confirm your password.
+                </div>
+                <div class="form-alert" ng-if="$ctrl.new.password !== $ctrl.new.passwordMatch">
+                    Your passwords don't match.
+                </div>
+            </div>
+        </div>
+        <div class="form-control">
+            <label>Email</label>
+            <input ng-model="$ctrl.new.email" name="email" type="email" required/>
+            <div ng-if="registerForm.email.$touched" ng-messages="registerForm.email.$error">
+                <div class="form-alert" ng-message="required">
+                    Email is required.
+                </div>
+                <div class="form-alert" ng-message="email">
+                    Invalid email address.
+                </div>
+            </div>
+        </div>
+        <div class="form-control">
+            <input type="submit" value="Register" ng-disabled="!registerForm.$valid"/>
+        </div>
+    </form>
+    <div ng-repeat="msg in $ctrl.messages">
+        {{msg}}
+    </div>
+</div>

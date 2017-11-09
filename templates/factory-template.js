@@ -4,8 +4,9 @@ module.exports = (moduleName, factoryName)=>{
 
 angular.module('${moduleName}')
   .factory('${factoryName}', ()=>{
-    return {
-
-    }`;
+      return {
+      }
+  });
+  `;
   return content;
 }

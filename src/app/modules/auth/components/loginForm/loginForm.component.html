@@ -1,0 +1,19 @@
+<div class="loginForm-component">
+  <h1>{{$ctrl.name}}</h1>
+  <form ng-submit="$ctrl.login()">
+      <div class="form-control">
+          <label>Username</label>
+          <input type="text" ng-model="$ctrl.user.username"/>
+      </div>
+      <div class="form-control">
+          <label>Password</label>
+          <input type="password" ng-model="$ctrl.user.password"/>
+      </div>
+      <div class="form-control">
+          <input type="submit" value="Login"/>
+      </div>
+  </form>
+  <button ng-click="$ctrl.logout()">Logout</button>
+  {{$ctrl.message}}
+
+</div>

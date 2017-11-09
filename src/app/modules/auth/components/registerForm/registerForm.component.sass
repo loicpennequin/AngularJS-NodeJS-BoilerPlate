@@ -1,0 +1,45 @@
+$RF-main-color: #DF4C58
+
+.registerForm-component
+    font-family: 'Poppins'
+
+    form
+        min-width: 25vw
+        background: #f7f7f7
+        padding: 10px 30px
+        margin: 0 auto
+
+    .form-control
+        margin-bottom: 10px
+
+        label, input
+            display: block
+
+        label
+            margin-bottom: 5px
+            font-weight: 700
+            color: $RF-main-color
+
+        input
+            padding: 5px
+            border-radius: 5px
+            width: 100%
+
+        input[type=submit]
+            background-color: $RF-main-color
+            color: white
+            font-family: 'Poppins'
+            border: none
+            cursor: pointer
+            font-size: 1.1em
+            &:hover
+                filter: brightness(120%)
+            &[disabled]
+                opacity: 0.5
+        input:focus
+            outline-width: 1px
+            outline-color: $RF-main-color
+
+    .form-alert
+        font-size: 0.8em
+        color: $RF-main-color
