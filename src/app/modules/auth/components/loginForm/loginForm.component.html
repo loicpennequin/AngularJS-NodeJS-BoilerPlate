@@ -14,6 +14,9 @@
       </div>
   </form>
   <button ng-click="$ctrl.logout()">Logout</button>
-  {{$ctrl.message}}
+  <p>{{$ctrl.message}}</p>
 
 </div>
+<p>Are you logged in ? <strong>
+  <span style="color: limegreen" ng-if="$ctrl.isLoggedIn === true">YES</span>
+  <span ng-if="$ctrl.isLoggedIn === false" style="color: red">NO</span></strong></p>

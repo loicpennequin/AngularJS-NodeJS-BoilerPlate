@@ -19,7 +19,7 @@ const gulp         = require('gulp'),
       buffer       = require('vinyl-buffer');
       del          = require('del'),
       runSequence  = require('run-sequence'),
-      browserSync  = require('browser-sync');
+
       require('babel-core');
 
  const BROWSER_SYNC_RELOAD_DELAY = 500;
@@ -64,8 +64,7 @@ gulp.task('sass', ()=>{
         .pipe(autoprefixer())
         .pipe(sourcemaps.write('.'))
         .pipe(gulp.dest(path.join(config.paths.baseDest, "css")))
-        .pipe(browserSync.reload({ stream: true }));
-        // .pipe(cond(!PROD, livereload()));
+        .pipe(cond(!PROD, livereload()));
 });
 
 gulp.task('font-awesome', ()=>{
@@ -87,7 +86,7 @@ gulp.task('html', ()=> {
             .pipe(ngTemplates({module: dir}))
             .pipe(concat(`${dir}.templates.js`))
             .pipe(gulp.dest(path.join(config.paths.baseSrc, `modules/${dir}`)))
-            // .pipe(cond(!PROD, livereload()));
+            .pipe(cond(!PROD, livereload()));
     })
 });
 
@@ -99,73 +98,43 @@ gulp.task('js', ()=>{
     .pipe(cond(!PROD, sourcemaps.init({loadMaps: true})))
     .pipe(cond(!PROD, sourcemaps.write('.')))
     .pipe(gulp.dest(path.join(config.paths.baseDest,"/js")))
-    // .pipe(cond(!PROD, livereload()));
-    .pipe(browserSync.reload({ stream: true }));
+    .pipe(cond(!PROD, livereload()))
 });
 
 // watcher
 gulp.task('watch', () => {
-    // livereload.listen(1234);
+    livereload.listen();
     gulp.watch(path.join(config.paths.baseSrc, '**/*.html'), ['html', 'js']);
     gulp.watch(path.join(config.paths.baseSrc, '**/*.sass'), ['sass']);
     gulp.watch(path.join(config.paths.baseSrc, '**/*.js'), ['js']);
 });
 
 // Run Express server
-gulp.task('serve', ['nodemon'], function () {
-    //comment this if you prefer to use livereload
-    browserSync({
-        proxy: {
-            target: 'http://localhost:8000',
-            proxyRes: [
-                function(proxyRes, req, res) {
-                
-                }
-            ]
-        },
-        port: 4000,
-        browser: ['chrome']
-    });
+gulp.task('serve', function () {
+    let called = false;
+    return nodemon({
+      script: 'server.js',
+      ignore: [
+              './src',
+              './git',
+              './gulpfile.js'
+          ]
+      })
+      .on('start', function onStart() {
+        if (!called) { cb(); }
+        called = true;
+      })
 });
 
-gulp.task('nodemon', function (cb) {
-  let called = false;
-  return nodemon({
-    script: 'server.js',
-    ignore: [
-            './src',
-            './git',
-            './gulpfile.js'
-        ]
-    })
-    .on('start', function onStart() {
-      if (!called) { cb(); }
-      called = true;
-    })
-    //comment this if you prefer to use livereload
-    .on('restart', function onRestart() {
-      setTimeout(function reload() {
-        browserSync.reload({
-          stream: false
-        });
-      }, BROWSER_SYNC_RELOAD_DELAY);
-    });
+//Open new browser window
+gulp.task('open', function(){
+    gulp.src(__filename)
+        .pipe(open({uri: 'http://localhost:8000', app: 'chrome'}));
 });
-
-gulp.task('bs-reload', function () {
-    browserSync.reload();
-});
-
-// Open new browser window
-// use only with livereload instead of browser sync
-// gulp.task('open', function(){
-//     gulp.src(__filename)
-//         .pipe(open({uri: 'http://localhost:8000', app: 'chrome'}));
-// });
 
 
 gulp.task('default', (cb) => {
-    runSequence('clean', 'html', 'css', 'js', 'serve', 'watch', cb);
+    runSequence('clean', 'html', 'css', 'js', 'serve', 'watch', 'open', cb);
 });
 
 

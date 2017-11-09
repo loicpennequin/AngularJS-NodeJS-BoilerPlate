@@ -14,8 +14,10 @@ function loginFormController(AuthFactory){
     $ctrl.name = "Login Form";
     AuthFactory.isLoggedIn().then(response =>{
         $ctrl.isLoggedIn = response.data.loggedIn;
+        console.log($ctrl.isLoggedIn);
     }, error =>{
         $ctrl.isLoggedIn = error.data.loggedIn;
+        console.log($ctrl.isLoggedIn);
     })
   };
 

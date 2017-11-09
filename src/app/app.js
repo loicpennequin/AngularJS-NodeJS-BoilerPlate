@@ -9,7 +9,7 @@ angular.module('app', ['auth', 'ui.router', 'ngMessages', 'ngAnimate', 'ngCookie
           <div style="font-weight: 400; font-size: 0.6em;">Thanks for using my boilerplate.</div>
         </h1>
 
-        <div style="max-width: 800px; margin: 0 auto 70px; padding: 40px; background: #eee; border-radius: 6px; box-shadow: 0 5px 5px -2px #333; font-family:'Arial'">
+        <div style="max-width:55vw; margin: 0 auto 70px; padding: 40px; background: #eee; border-radius: 6px; box-shadow: 0 5px 5px -2px #333; font-family:'Arial'">
 
           <h2> Hello and welcome to your app!</h2>
           <p> It is currently in it's default state 'sampleState' (as in ui-router state).</p>

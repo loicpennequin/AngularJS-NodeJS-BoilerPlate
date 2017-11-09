@@ -51,19 +51,21 @@ require(path.join(__dirname, '/app/middlewares/passport/auth.js'))();
     ============================================================================= */
 app.disable('x-powered-by');
 // app.use(express.static(path.join(__dirname, '/src/dist')));
+app.use(express.static(path.join(__dirname, '/src/assets')));
+app.use(express.static(path.join(__dirname, '/src/build')));
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(sessionParams);
 app.use(passport.initialize());
 app.use(passport.session());
-app.use(express.static(path.join(__dirname, '/src/assets')));
-app.use(express.static(path.join(__dirname, '/src/build')));
-app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  next();
-});
+if (process.env.NODE_ENV === "Development"){
+  app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+  });
+};
 /*  =============================================================================
     Configure routes
     ============================================================================= */
